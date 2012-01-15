@@ -1,0 +1,253 @@
+@import "helpers";
+
+@inputWidth: 200px;
+@labelColumnWidth: 180px;
+@padding: 10px;
+
+form.styln {
+    div.buttons.styln {
+        text-align: right;
+    }
+
+    .fieldStatus (@color) {
+        background: lighten(@color, 45%);
+        border-color: lighten(@color, 30%);
+        color: darken(@color, 13%) !important;
+
+        span {
+            color: fadeout(darken(@color, 13%), 20%) !important;
+        }
+    }
+
+    .hoverFields div.styln:hover
+    ,div.styln.hover {
+        .fieldStatus(#22c3c3);
+    }
+
+    div.styln {
+        border: 1px solid transparent;
+        .clearfix;
+        margin: @padding;
+        padding: @padding;
+
+        &.error {
+            .fieldStatus(red);
+        }
+
+        &.highlight {
+            .fieldStatus(#fad900);
+        }
+
+        &.info {
+            .fieldStatus(#22a3c3);
+        }
+
+        &.valid {
+            .fieldStatus(#22c358);
+        }
+
+        &.warning {
+            .fieldStatus(orange);
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .narrow {
+            width: @inputWidth / 2;
+        }
+
+        .wide {
+            width: @inputWidth * 2;
+        }
+
+        @pBottom: 3px;
+        @plr: 14px;
+        @pTop: @pBottom + 2;
+        @shim: 3;
+        @pInline: -3;
+        .buttonColors (@color, @text: fadeout(#FFFFFF, 20%)) {
+            background: @color;
+            .gradient(lighten(@color, 10%), darken(@color, 15%));
+            border: 1px solid darken(@color, 20%);
+            color: @text;
+            .rounded(5px);
+        }
+        .buttonColorshover (@color) {
+            background: @color;
+            .gradient(lighten(@color, 25%), darken(@color, 5%));
+            border-color: darken(@color, 20%);
+            color: white;
+        }
+
+        .button
+        ,button
+        ,input[type=button]
+        ,input[type=reset]
+        ,input[type=submit] {
+            @btnColor: #1B5C9D;
+            .buttonColors(@btnColor);
+            cursor: pointer;
+            display: inline-block;
+            margin: 0px;
+            padding: @pTop + @shim @plr @pBottom + @shim;
+            text-decoration: none;
+
+            &.inline {
+                font-size: .98em;
+                left: 0px;
+                padding: @pTop + @shim + @pInline @plr + @pInline @pBottom + @shim + @pInline;
+                position: relative;
+                top: 1px;
+            }
+
+            &:hover {
+                .buttonColorshover(lighten(@btnColor, 10%));
+            }
+
+            &.error {
+                @btnColor: #C22929;
+                .buttonColors(@btnColor);
+
+                &:hover {
+                    .buttonColorshover(@btnColor);
+                }
+            }
+
+            &.green {
+                @btnColor: #179717;
+                .buttonColors(@btnColor);
+
+                &:hover {
+                    .buttonColorshover(@btnColor);
+                }
+            }
+
+            &.info {
+                @btnColor: #25ACC1;
+                .buttonColors(@btnColor);
+
+                &:hover {
+                    .buttonColorshover(@btnColor);
+                }
+            }
+
+            &.warning
+            ,&[type=reset] {
+                @btnColor: #DF8526;
+                .buttonColors(@btnColor);
+
+                &:hover {
+                    .buttonColorshover(@btnColor);
+                }
+            }
+
+            // .disabled last so it has higher precedence
+            &.disabled {
+                @btnColor: #adadad;
+                .buttonColors(@btnColor);
+                cursor: default;
+            }
+        }
+
+        .button {
+            &.button
+            ,&:hover {
+                padding: @pTop @plr @pBottom;
+            }
+
+            &.inline
+            ,&.inline:hover {
+                padding: @pTop + @pInline @plr + @pInline @pBottom + @pInline;
+            }
+        }
+
+        fieldset {
+            legend {
+                display: none;
+            }
+
+            &.legend {
+                margin-left: @labelColumnWidth + @padding;
+
+                legend {
+                    display: block;
+                }
+            }
+
+            &.stacked {
+                label.inline {
+                    display: block;
+                }
+            }
+        }
+
+        .input
+        ,input {
+            display: inline-block;
+            left: 0px;
+            positon: relative;
+            top: 0px;
+            width: @inputWidth;
+
+            &[type=button]
+            ,&[type=checkbox]
+            ,&[type=radio]
+            ,&[type=reset]
+            ,&[type=submit] {
+                width: auto;
+            }
+        }
+
+        label {
+            float: left;
+            left: 0px;
+            margin-right: @padding;
+            position: relative;
+            text-align: right;
+            top: 0px;
+            width: @labelColumnWidth;
+
+            input[type=checkbox] {
+                left: 0px;
+                position: relative;
+                top: -2px;
+            }
+
+            &.inline {
+                float: none;
+                text-align: left;
+                width: auto;
+            }
+        }
+
+        select {
+            left: 0px;
+            positon: relative;
+            top: 0px;
+            width: @inputWidth + 6px;
+        }
+
+        span {
+            color: fadeout(black, 50%);
+            display: inline-block;
+            padding: 0px 10px;
+        }
+
+        textarea {
+            left: 0px;
+            position: relative;
+            top: 0px;
+            width: @inputWidth * 2;
+
+            &.narrow {
+                width: @inputWidth * 1.25;
+            }
+
+            &.wide {
+                width: @inputWidth * 3;
+            }
+        }
+    }
+}
