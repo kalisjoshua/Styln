@@ -1,10 +1,12 @@
 @import "helpers";
 
-@inputWidth: 200px;
-@labelColumnWidth: 180px;
-@padding: 10px;
-
 form.styln {
+    @borderColor: lighten(black, 70%);
+    @inputPadding: 3px;
+    @inputWidth: 200px;
+    @labelColumnWidth: 180px;
+    @padding: 10px;
+
     div.buttons.styln {
         text-align: right;
     }
@@ -13,6 +15,16 @@ form.styln {
         background: lighten(@color, 45%);
         border-color: lighten(@color, 30%);
         color: darken(@color, 13%) !important;
+
+        input
+        ,select
+        ,textarea {
+            border-color: lighten(@color, 10%);
+
+            &:focus {
+                border-color: darken(@color, 20%);
+            }
+        }
 
         span {
             color: fadeout(darken(@color, 13%), 20%) !important;
@@ -24,11 +36,25 @@ form.styln {
         .fieldStatus(#22c3c3);
     }
 
+    .inputUI () {
+        border: 1px solid @borderColor;
+        padding: @inputPadding;
+        .rounded(0);
+
+        &:focus {
+            border-color: #444444;
+        }
+    }
+
     div.styln {
         border: 1px solid transparent;
         .clearfix;
         margin: @padding;
         padding: @padding;
+
+        &.disabled {
+            .fieldStatus(grey);
+        }
 
         &.error {
             .fieldStatus(red);
@@ -54,6 +80,10 @@ form.styln {
             display: none;
         }
 
+        .mini {
+            width: @inputWidth / 4;
+        }
+
         .narrow {
             width: @inputWidth / 2;
         }
@@ -69,14 +99,14 @@ form.styln {
         @pInline: -3;
         .buttonColors (@color, @text: fadeout(#FFFFFF, 20%)) {
             background: @color;
-            .gradient(lighten(@color, 10%), darken(@color, 15%));
+            .gradient(lighten(@color, 5%), darken(@color, 5%));
             border: 1px solid darken(@color, 20%);
             color: @text;
             .rounded(5px);
         }
         .buttonColorshover (@color) {
             background: @color;
-            .gradient(lighten(@color, 25%), darken(@color, 5%));
+            .gradient(lighten(@color, 10%), darken(@color, 15%));
             border-color: darken(@color, 20%);
             color: white;
         }
@@ -144,7 +174,8 @@ form.styln {
             }
 
             // .disabled last so it has higher precedence
-            &.disabled {
+            &.disabled
+            ,&:disabled {
                 @btnColor: #adadad;
                 .buttonColors(@btnColor);
                 cursor: default;
@@ -160,6 +191,19 @@ form.styln {
             &.inline
             ,&.inline:hover {
                 padding: @pTop + @pInline @plr + @pInline @pBottom + @pInline;
+            }
+        }
+
+        div {
+            &.desc {
+                color: lighten(black, 60%);
+                margin-top: 0.5em;
+                margin-left: @labelColumnWidth + @padding * 2;
+
+                &:hover {
+                    color: #444444;
+                    .transition;
+                }
             }
         }
 
@@ -183,10 +227,10 @@ form.styln {
             }
         }
 
-        .input
-        ,input {
+        .input {
             display: inline-block;
             left: 0px;
+            padding-left: @inputPadding;
             positon: relative;
             top: 0px;
             width: @inputWidth;
@@ -198,6 +242,12 @@ form.styln {
             ,&[type=submit] {
                 width: auto;
             }
+        }
+
+        input {
+            .inputUI;
+            .input;
+            padding: @inputPadding;
         }
 
         label {
@@ -222,7 +272,18 @@ form.styln {
             }
         }
 
+        optgroup {
+            color: grey;
+            font-style: normal;
+
+            option {
+                color: black;
+            }
+        }
+
         select {
+            .inputUI;
+
             left: 0px;
             positon: relative;
             top: 0px;
@@ -230,12 +291,15 @@ form.styln {
         }
 
         span {
-            color: fadeout(black, 50%);
-            display: inline-block;
-            padding: 0px 10px;
+            &.hint {
+                color: fadeout(black, 50%);
+                display: inline-block;
+                padding: 0px 10px;
+            }
         }
 
         textarea {
+            .inputUI;
             left: 0px;
             position: relative;
             top: 0px;
