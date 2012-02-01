@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>forms.css library</title>
+    <title>Styln - A CSS Forms Layout Library</title>
 
     <link rel="stylesheet" href="css/h5bp.css" />
     <link rel="stylesheet" href="css/styln.forms.css" />
@@ -27,11 +27,10 @@
                 }
     </style>
 
-    <script src="js/modernizr.custom.js"></script>
 
 <body>
     <form class="styln">
-        <h1>Styln - CSS for form layout</h1>
+        <h1>Styln - A CSS Forms Layout Library</h1>
         <p>Styln is focused on the layout of properly marked up html forms, therefore it only affects the form elements position and layout. Styln only attempts to baseline and enhance some aspects of the form elements. Some features not effected by Styln are</p>
         <ul>
             <li>font-size - besides where necessary to unify conformity
@@ -46,7 +45,7 @@
         <div class="styln">
             <label class="" for="Text">Text </label>
             <input class="" id="Text" name="Text" type="text" />
-            <div class="desc">Additional field description area may contain 
+            <div class="desc">Additional field description area (&lt;div class="desc"&gt;) may contain 
                 <ul>
                     <li>plain text
                     <li>html
@@ -260,9 +259,9 @@
 
         <div class="styln">
             <label class="" for="NameFull">Name (First Middle Last) </label>
-            <input class="" id="NameFull" name="NameFirst" type="text" />
-            <input class="mini" id="NameFull" name="NameMiddle" type="text" />
-            <input class="" id="NameFull" name="NameLast" type="text" />
+            <input class="" id="NameFull" name="NameFirst" placeholder="First" type="text" />
+            <input class="mini" id="NameFull" name="NameMiddle" placeholder="Middle" type="text" />
+            <input class="" id="NameFull" name="NameLast" placeholder="Last" type="text" />
         </div>
 
         <div class="styln">
@@ -285,7 +284,7 @@
         <div class="styln">
             <label class="" for="Hint">Hint Example </label>
             <input class="" id="Hint" name="Hint" type="text" />
-            <span class="hint">short hint beside field</span>
+            <span class="hint">short hint (&lt;span class="hint"&gt;) beside field</span>
         </div>
 
         <h2>Field Status</h2>
@@ -341,8 +340,32 @@
             <span class="hint">warning span hint</span>
         </div>
 
-        <h2>Disabled Fields</h2>
-        <p>Acknowledge that the field exists, just don't let them edit the content; you tease.</p>
+        <h2>Message Blocks</h2>
+        <p>These blocks can be helpful in informing the users of important information.</p>
+
+        <div class="styln message disabled">
+            <p>This is some message text to let the user know about some information sent back from the server of validations based on input.</p>
+        </div>
+
+        <div class="styln message error">
+            <p>This is some message text to let the user know about some information sent back from the server of validations based on input.</p>
+        </div>
+
+        <div class="styln message highlight">
+            <p>This is some message text to let the user know about some information sent back from the server of validations based on input.</p>
+        </div>
+
+        <div class="styln message info">
+            <p>This is some message text to let the user know about some information sent back from the server of validations based on input.</p>
+        </div>
+
+        <div class="styln message valid">
+            <p>This is some message text to let the user know about some information sent back from the server of validations based on input.</p>
+        </div>
+
+        <div class="styln message warning">
+            <p>This is some message text to let the user know about some information sent back from the server of validations based on input.</p>
+        </div>
 
         <h2>Advanced Input Elements</h2>
 

@@ -25,10 +25,6 @@ form.styln {
                 border-color: darken(@color, 20%);
             }
         }
-
-        span {
-            color: fadeout(darken(@color, 13%), 20%) !important;
-        }
     }
 
     .hoverFields div.styln:hover
@@ -62,6 +58,16 @@ form.styln {
 
         &.highlight {
             .fieldStatus(#fad900);
+        }
+
+        &.message {
+            margin: 1em 6em;
+            padding: 0em 3em;
+
+            p {
+                margin: .25em;
+                padding: .25em;
+            }
         }
 
         &.info {
@@ -273,7 +279,7 @@ form.styln {
         }
 
         optgroup {
-            color: grey;
+            color: lighten(black, 60%);
             font-style: normal;
 
             option {
@@ -292,7 +298,7 @@ form.styln {
 
         span {
             &.hint {
-                color: fadeout(black, 50%);
+                color: lighten(black, 50%);
                 display: inline-block;
                 padding: 0px 10px;
             }
